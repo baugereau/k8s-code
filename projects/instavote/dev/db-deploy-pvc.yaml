@@ -31,6 +31,7 @@ spec:
         volumeMounts:
         - name: db-vol
           mountPath: /var/lib/postgresql/data
+          subPath: postgres
       #create a volume with pvc
       volumes:
       - name: db-vol
