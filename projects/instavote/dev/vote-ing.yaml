@@ -1,5 +1,5 @@
 ---
-apiVersion: extensions/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: vote
@@ -12,14 +12,9 @@ spec:
     http:
       paths:
       - path: /
+        pathType: Exact
         backend:
-          serviceName: vote
-          servicePort: 80
-  - host: results.example.com
-    http:
-      paths:
-      - path: /
-        backend:
-          serviceName: results
-          servicePort: 80
-
+          service:
+            name: vote
+            port:
+              number: 80
